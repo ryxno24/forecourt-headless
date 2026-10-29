@@ -1,0 +1,93 @@
+name: forecourt
+
+x-wordpress-env: &wordpress-env
+  WORDPRESS_DB_HOST: db
+  WORDPRESS_DB_NAME: ${DB_NAME:-wordpress}
+  WORDPRESS_DB_USER: ${DB_USER:-wordpress}
+  WORDPRESS_DB_PASSWORD: ${DB_PASSWORD:-wordpress}
+  FORECOURT_SHARED_SECRET: ${FORECOURT_SHARED_SECRET:?Set FORECOURT_SHARED_SECRET in .env}
+  FORECOURT_FRONTEND_URL: ${FORECOURT_FRONTEND_URL:-http://localhost:3000}
+  FORECOURT_FRONTEND_INTERNAL_URL: ${FORECOURT_FRONTEND_INTERNAL_URL:-http://host.docker.internal:3000}
+  FORECOURT_SMTP_HOST: mailpit
+  FORECOURT_SMTP_PORT: 1025
+
+x-wordpress-volumes: &wordpress-volumes
+  - wp_data:/var/www/html
+  - ./wordpress/mu-plugins:/var/www/html/wp-content/mu-plugins
+  - ./wordpress/themes/forecourt-headless:/var/www/html/wp-content/themes/forecourt-headless
+  - ./wordpress/plugins-dropin:/plugins-dropin:ro
+  - ./wordpress/scripts:/scripts:ro
+  - ./wordpress/seed:/seed:ro
+
+services:
+  db:
+    image: mariadb:11.4
+    restart: unless-stopped
+    environment:
+      MARIADB_DATABASE: ${DB_NAME:-wordpress}
+      MARIADB_USER: ${DB_USER:-wordpress}
+      MARIADB_PASSWORD: ${DB_PASSWORD:-wordpress}
+      MARIADB_RANDOM_ROOT_PASSWORD: "1"
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  wordpress:
+    image: wordpress:7.1-php8.3-apache
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "${WP_PORT:-8080}:80"
+    environment: *wordpress-env
+    volumes: *wordpress-volumes
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  wpcli:
+    image: wordpress:cli-2.12-php8.3
+    profiles: ["tools"]
+    user: "33:33"
+    depends_on:
+      db:
+        condition: service_healthy
+      wordpress:
+        condition: service_started
+    environment:
+      <<: *wordpress-env
+      WP_URL: ${WP_URL:-http://localhost:8080}
+      WP_ADMIN_USER: ${WP_ADMIN_USER:-admin}
+      WP_ADMIN_PASSWORD: ${WP_ADMIN_PASSWORD:-password}
+      WP_ADMIN_EMAIL: ${WP_ADMIN_EMAIL:-admin@forecourt.test}
+    volumes: *wordpress-volumes
+
+  mailpit:
+    image: axllent/mailpit:v1.32
+    restart: unless-stopped
+    ports:
+      - "${MAILPIT_PORT:-8025}:8025"
+
+  frontend:
+    profiles: ["frontend"]
+    build:
+      context: ./frontend
+      args:
+        CONTENT_SOURCE: fixtures
+    ports:
+      - "3000:3000"
+    environment:
+      WORDPRESS_URL: http://wordpress
+      SITE_URL: ${FORECOURT_FRONTEND_URL:-http://localhost:3000}
+      FORECOURT_SHARED_SECRET: ${FORECOURT_SHARED_SECRET}
+      CONTENT_SOURCE: wordpress
+    depends_on:
+      - wordpress
+
+volumes:
+  wp_data:
+  db_data:

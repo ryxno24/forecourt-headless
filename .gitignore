@@ -1,0 +1,13 @@
+.env
+.env.local
+node_modules/
+.next/
+out/
+coverage/
+playwright-report/
+test-results/
+.DS_Store
+*.log
+wordpress/plugins-dropin/*
+!wordpress/plugins-dropin/.gitkeep
+!wordpress/plugins-dropin/README.md
