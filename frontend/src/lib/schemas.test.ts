@@ -41,6 +41,16 @@ describe("parseSections", () => {
     expect(sections.some((section) => section.layout === "hero")).toBe(false);
   });
 
+  it("keeps the contact section when an older API omits its trust points", () => {
+    const contact = pageFixture.sections.find((section) => section.layout === "contact")!;
+    const { trustPoints, ...withoutTrustPoints } = contact as typeof contact & { trustPoints: string[] };
+
+    const [parsed] = parseSections([withoutTrustPoints]);
+
+    expect(trustPoints.length).toBeGreaterThan(0);
+    expect(parsed).toMatchObject({ layout: "contact", trustPoints: [] });
+  });
+
   it("drops entries that are not objects", () => {
     vi.spyOn(console, "warn").mockImplementation(() => {});
 

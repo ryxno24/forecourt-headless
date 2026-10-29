@@ -91,6 +91,7 @@ const ContactSchema = z.object({
   layout: z.literal("contact"),
   heading: optionalText,
   intro: optionalText,
+  trustPoints: z.array(text).default([]),
   successMessage: optionalText,
 });
 

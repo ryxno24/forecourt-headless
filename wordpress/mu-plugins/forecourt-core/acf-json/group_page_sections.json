@@ -876,6 +876,43 @@
                             "new_lines": ""
                         },
                         {
+                            "key": "field_fc_contact_trust_points",
+                            "label": "Trust points",
+                            "name": "trust_points",
+                            "type": "repeater",
+                            "instructions": "Short reassurances shown beside the form.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "layout": "block",
+                            "button_label": "Add trust point",
+                            "min": 0,
+                            "max": 3,
+                            "collapsed": "",
+                            "rows_per_page": 20,
+                            "sub_fields": [
+                                {
+                                    "key": "field_fc_contact_trust_points_text",
+                                    "label": "Text",
+                                    "name": "text",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "parent_repeater": "field_fc_contact_trust_points"
+                                }
+                            ]
+                        },
+                        {
                             "key": "field_fc_contact_success_message",
                             "label": "Success message",
                             "name": "success_message",
@@ -927,5 +964,5 @@
     "active": true,
     "description": "Flexible content sections rendered by the Next.js frontend.",
     "show_in_rest": 0,
-    "modified": 1761696000
+    "modified": 1761764400
 }

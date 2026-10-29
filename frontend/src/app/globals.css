@@ -20,6 +20,7 @@
   --color-brand-strong: #f2b600;
   --color-go: #17784a;
   --color-star: #b86e00;
+  --color-danger: #b42318;
   --color-muted: var(--muted);
 
   --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
@@ -30,6 +31,10 @@
   html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
+  }
+
+  section[id] {
+    scroll-margin-top: 5rem;
   }
 
   @media (prefers-reduced-motion: reduce) {

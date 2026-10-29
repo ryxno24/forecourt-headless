@@ -1,6 +1,7 @@
 import { render, screen, within } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { Cards } from "./Cards";
+import { Contact } from "./Contact";
 import { Cta } from "./Cta";
 import { Faq } from "./Faq";
 import { Hero } from "./Hero";
@@ -8,6 +9,8 @@ import { Stats } from "./Stats";
 import { Testimonials } from "./Testimonials";
 import { TextImage } from "./TextImage";
 import { fixtureSection, settings } from "./test-utils";
+
+vi.mock("@/actions/enquiry", () => ({ submitEnquiry: async () => ({ status: "idle" }) }));
 
 describe("Hero", () => {
   it("renders the heading as the page h1 with the image", () => {
@@ -100,5 +103,30 @@ describe("Faq", () => {
 
     expect(container.querySelectorAll("details")).toHaveLength(5);
     expect(container.querySelector("details summary")).toHaveTextContent("How do you work out my valuation?");
+  });
+});
+
+describe("Contact", () => {
+  it("puts the form beside the rating, trust points and a click to call link", () => {
+    render(<Contact section={fixtureSection("contact")} settings={settings} />);
+
+    expect(screen.getByRole("heading", { level: 2 })).toHaveTextContent("Get your free valuation");
+    expect(screen.getByLabelText(/registration/i)).toBeInTheDocument();
+    expect(screen.getByText("No obligation to sell")).toBeInTheDocument();
+    expect(screen.getByText(/rated 4.8 out of 5/i)).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /0161 496 0000/ })).toHaveAttribute("href", "tel:01614960000");
+  });
+
+  it("still renders the form without trust points, rating or phone", () => {
+    render(
+      <Contact
+        section={fixtureSection("contact", { trustPoints: [] })}
+        settings={{ ...settings, rating: null, phone: null }}
+      />,
+    );
+
+    expect(screen.getByLabelText(/registration/i)).toBeInTheDocument();
+    expect(screen.queryByRole("list")).toBeNull();
+    expect(screen.queryByRole("link")).toBeNull();
   });
 });

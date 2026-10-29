@@ -185,6 +185,7 @@
       "anchor": "contact",
       "heading": "Get your free valuation",
       "intro": "Tell us about your car and one of our buyers will call you back with a guaranteed price, usually within the hour.",
+      "trustPoints": ["No obligation to sell", "Your price is guaranteed for 7 days", "We never pass your details on"],
       "successMessage": "Thanks, we've got your details. One of our buyers will call you within the hour (8am to 8pm, 7 days a week)."
     }
   ]

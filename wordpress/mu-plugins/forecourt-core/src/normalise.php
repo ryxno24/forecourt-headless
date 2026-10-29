@@ -79,6 +79,15 @@ function forecourt_normalise_rows(mixed $rows, callable $map, array $required): 
 	}));
 }
 
+function forecourt_normalise_trust_points(mixed $rows): array
+{
+	return array_column(forecourt_normalise_rows(
+		$rows,
+		fn (array $point) => ['text' => forecourt_text($point['text'] ?? '')],
+		['text']
+	), 'text');
+}
+
 function forecourt_normalise_section(array $row, int $index): array
 {
 	$layout = (string) ($row['acf_fc_layout'] ?? 'unknown');
@@ -98,11 +107,7 @@ function forecourt_normalise_section(array $row, int $index): array
 			'primaryCta' => forecourt_normalise_link($row['primary_cta'] ?? null),
 			'secondaryCta' => forecourt_normalise_link($row['secondary_cta'] ?? null),
 			'image' => forecourt_normalise_image($row['image'] ?? null),
-			'trustPoints' => array_column(forecourt_normalise_rows(
-				$row['trust_points'] ?? [],
-				fn (array $point) => ['text' => forecourt_text($point['text'] ?? '')],
-				['text']
-			), 'text'),
+			'trustPoints' => forecourt_normalise_trust_points($row['trust_points'] ?? []),
 		],
 		'text_image' => [
 			'heading' => forecourt_text($row['heading'] ?? ''),
@@ -153,6 +158,7 @@ function forecourt_normalise_section(array $row, int $index): array
 		'contact' => [
 			'heading' => forecourt_text($row['heading'] ?? ''),
 			'intro' => forecourt_multiline($row['intro'] ?? ''),
+			'trustPoints' => forecourt_normalise_trust_points($row['trust_points'] ?? []),
 			'successMessage' => forecourt_multiline($row['success_message'] ?? ''),
 		],
 		default => [],

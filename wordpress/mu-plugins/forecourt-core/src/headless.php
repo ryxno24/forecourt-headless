@@ -45,6 +45,9 @@ add_action('phpmailer_init', function (PHPMailer\PHPMailer\PHPMailer $mailer): v
 	$mailer->SMTPAutoTLS = false;
 });
 
+add_filter('wp_mail_from', fn (): string => forecourt_env('FORECOURT_MAIL_FROM', 'noreply@forecourt.test'));
+add_filter('wp_mail_from_name', fn (): string => get_bloginfo('name'));
+
 add_filter('xmlrpc_enabled', '__return_false');
 
 add_action('admin_menu', function (): void {
