@@ -18,10 +18,10 @@ export function Faq({ section }: SectionProps<"faq">) {
         <SectionHeading id={headingId(section)} heading={heading} />
         <div className="divide-y divide-line border-y border-line">
           {items.map((item) => (
-            <details key={item.question} className="group">
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-5 text-lg font-semibold [&::-webkit-details-marker]:hidden">
+            <details key={item.question} className="faq-item group">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-5 text-lg font-semibold transition-colors hover:text-ink-strong [&::-webkit-details-marker]:hidden">
                 {item.question}
-                <PlusIcon className="size-6 shrink-0 transition-transform group-open:rotate-45 motion-reduce:transition-none" />
+                <PlusIcon className="size-6 shrink-0 transition-transform duration-300 group-open:rotate-45 motion-reduce:transition-none" />
               </summary>
               <RichText html={item.answer} className="pb-6 text-muted" />
             </details>
