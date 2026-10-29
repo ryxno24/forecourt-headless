@@ -3,6 +3,7 @@ import { Bricolage_Grotesque, Inter } from "next/font/google";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { StickyCta } from "@/components/layout/StickyCta";
+import { getEnv } from "@/lib/env";
 import { buildNav } from "@/lib/navigation";
 import { getPage, getSettings } from "@/lib/wordpress";
 import "./globals.css";
@@ -10,9 +11,14 @@ import "./globals.css";
 const heading = Bricolage_Grotesque({ subsets: ["latin"], variable: "--font-heading", display: "swap" });
 const body = Inter({ subsets: ["latin"], variable: "--font-body", display: "swap" });
 
-export const metadata: Metadata = {
-  title: "Forecourt",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const { siteName } = await getSettings();
+
+  return {
+    metadataBase: new URL(getEnv().SITE_URL),
+    title: { default: siteName, template: `%s | ${siteName}` },
+  };
+}
 
 export default async function RootLayout({ children }: LayoutProps<"/">) {
   const [settings, page] = await Promise.all([getSettings(), getPage("home")]);
