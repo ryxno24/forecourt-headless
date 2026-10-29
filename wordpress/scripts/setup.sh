@@ -22,13 +22,17 @@ dropin="$(find /plugins-dropin -maxdepth 1 -name 'advanced-custom-fields-pro*.zi
 
 if [ -n "$dropin" ]; then
   echo "Using ACF Pro from $(basename "$dropin")"
+  if wp plugin is-installed secure-custom-fields; then
+    wp plugin deactivate secure-custom-fields --quiet || true
+    wp plugin delete secure-custom-fields
+  fi
   wp plugin is-installed advanced-custom-fields-pro || wp plugin install "$dropin"
   wp plugin activate advanced-custom-fields-pro
-  if wp plugin is-active secure-custom-fields; then
-    wp plugin deactivate secure-custom-fields
-  fi
 else
   echo "No ACF Pro zip found, using Secure Custom Fields"
+  if wp plugin is-active advanced-custom-fields-pro; then
+    wp plugin deactivate advanced-custom-fields-pro
+  fi
   wp plugin is-installed secure-custom-fields || wp plugin install secure-custom-fields
   wp plugin activate secure-custom-fields
 fi
@@ -45,7 +49,7 @@ wp option update blog_public 0
 wp option update blogdescription "Sell your car in 24 hours"
 wp option update timezone_string "Europe/London"
 
-if [ -f /scripts/seed.php ]; then
+if [ -f /scripts/seed.php ] && [ -f /seed/home.json ]; then
   wp eval-file /scripts/seed.php
 fi
 

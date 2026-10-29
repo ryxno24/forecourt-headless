@@ -33,3 +33,7 @@ add_action('admin_notices', function (): void {
 
 	echo '<div class="notice notice-error"><p>Forecourt requires ACF Pro or Secure Custom Fields. Run <code>make setup</code> to install it.</p></div>';
 });
+
+add_filter('use_block_editor_for_post_type', function (bool $use, string $post_type): bool {
+	return $post_type === 'page' ? false : $use;
+}, 10, 2);

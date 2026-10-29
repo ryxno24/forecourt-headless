@@ -1,0 +1,110 @@
+{
+  "page": {
+    "title": "Home",
+    "seo": {
+      "title": "Sell Your Car in Manchester, Paid in 24 Hours | Forecourt",
+      "description": "Get a guaranteed valuation in 60 seconds, book a free 20-minute inspection and get paid the same day. No admin fees, free collection across Greater Manchester.",
+      "og_image": { "seed_image": "hero-blue-hatchback.jpg", "alt": "Blue hatchback parked on a country road under a wide blue sky" },
+      "noindex": false
+    },
+    "sections": [
+      {
+        "acf_fc_layout": "hero",
+        "anchor": "",
+        "eyebrow": "Manchester & the North West",
+        "heading": "Sell your car in 24 hours. Paid the same day.",
+        "body": "Get a guaranteed valuation in 60 seconds, book a free inspection that suits you, and have the money in your account before you hand over the keys.",
+        "primary_cta": { "title": "Get my free valuation", "url": "#contact", "target": "" },
+        "secondary_cta": { "title": "How it works", "url": "#how-it-works", "target": "" },
+        "image": { "seed_image": "hero-blue-hatchback.jpg", "alt": "Blue hatchback parked on a country road under a wide blue sky" },
+        "trust_points": [
+          { "text": "No admin fees" },
+          { "text": "Free home collection" },
+          { "text": "Outstanding finance settled for you" }
+        ]
+      },
+      {
+        "acf_fc_layout": "stats",
+        "anchor": "",
+        "heading": "Forecourt in numbers",
+        "items": [
+          { "value": "24h", "label": "From valuation to payment" },
+          { "value": "12,000+", "label": "Cars bought since 2019" },
+          { "value": "4.8/5", "label": "Average customer rating" },
+          { "value": "£0", "label": "Admin or collection fees" }
+        ]
+      },
+      {
+        "acf_fc_layout": "cards",
+        "anchor": "how-it-works",
+        "heading": "How it works",
+        "intro": "Three steps. No haggling, no hidden fees, no strangers test-driving your car.",
+        "numbered": true,
+        "items": [
+          { "title": "Get your valuation", "body": "Enter your reg and mileage. You'll get a guaranteed price based on live market data, not a teaser figure that drops on the day.", "icon": "" },
+          { "title": "Book a free inspection", "body": "Pick a time at one of our Manchester sites, or we'll come to you. It takes about 20 minutes.", "icon": "" },
+          { "title": "Get paid the same day", "body": "Once the inspection's done we transfer the money instantly and handle the V5C paperwork for you.", "icon": "" }
+        ]
+      },
+      {
+        "acf_fc_layout": "text_image",
+        "anchor": "why-forecourt",
+        "heading": "A fair price, without the hassle",
+        "body": "<p>Selling privately means time-wasters, test drives with strangers and payment risk. Part-exchange often hides a low offer inside a new-car deal.</p><p>We buy outright, at a price we commit to upfront. If the inspection matches what you told us, that's what you're paid, and we'll settle any outstanding finance directly with your lender.</p>",
+        "image": { "seed_image": "city-car.jpg", "alt": "Small red car parked on a cobbled street in front of colourful townhouses" },
+        "image_position": "left",
+        "cta": { "title": "Get my free valuation", "url": "#contact", "target": "" }
+      },
+      {
+        "acf_fc_layout": "testimonials",
+        "anchor": "reviews",
+        "heading": "What sellers say",
+        "items": [
+          { "quote": "Valuation online on Sunday night, inspected on Monday morning, money in my account by lunch. The price was exactly what they quoted.", "name": "Priya S.", "location": "Stockport", "rating": 5 },
+          { "quote": "I still had finance on my car and assumed it'd be a headache. They dealt with the lender directly and paid me the difference the same day.", "name": "Tom H.", "location": "Salford", "rating": 5 },
+          { "quote": "Beat my dealer's part-exchange offer by £1,150 and they collected it from my drive. Couldn't have been easier.", "name": "Gemma R.", "location": "Bolton", "rating": 5 }
+        ]
+      },
+      {
+        "acf_fc_layout": "cta",
+        "anchor": "",
+        "heading": "See what your car is worth in 60 seconds",
+        "body": "No obligation to sell, and your valuation is guaranteed for 7 days.",
+        "cta": { "title": "Get my free valuation", "url": "#contact", "target": "" },
+        "variant": "brand"
+      },
+      {
+        "acf_fc_layout": "faq",
+        "anchor": "faq",
+        "heading": "Questions sellers ask",
+        "items": [
+          { "question": "How do you work out my valuation?", "answer": "<p>We use live auction and retail data for your make, model, age and mileage, then factor in the condition you describe. The figure you see is the figure we pay, as long as the inspection matches.</p>" },
+          { "question": "Can I sell a car with outstanding finance?", "answer": "<p>Yes. We settle the finance directly with your lender and pay you any balance on the same day. If you owe more than the car is worth, we'll tell you upfront.</p>" },
+          { "question": "What documents do I need?", "answer": "<p>Your V5C logbook, photo ID, both sets of keys and the service history if you have it. We'll take care of notifying the DVLA.</p>" },
+          { "question": "How quickly will I be paid?", "answer": "<p>Payment is made by bank transfer as soon as the inspection is complete and the paperwork is signed, usually within an hour.</p>" },
+          { "question": "What happens if the inspection finds something I missed?", "answer": "<p>We'll explain exactly what we found and give you a revised price on the spot. You're under no obligation to accept it, and there's no charge if you walk away.</p>" }
+        ]
+      },
+      {
+        "acf_fc_layout": "contact",
+        "anchor": "contact",
+        "heading": "Get your free valuation",
+        "intro": "Tell us about your car and one of our buyers will call you back with a guaranteed price, usually within the hour.",
+        "success_message": "Thanks, we've got your details. One of our buyers will call you within the hour (8am to 8pm, 7 days a week)."
+      }
+    ]
+  },
+  "settings": {
+    "site_name": "Forecourt",
+    "phone": "0161 496 0000",
+    "email": "hello@forecourt.example",
+    "address": "Unit 4, Trade Park Way\nManchester\nM17 1AA",
+    "header_cta": { "title": "Get my valuation", "url": "#contact", "target": "" },
+    "footer_text": "Forecourt is a fictional business created for a technical assessment. Names, figures and reviews are illustrative.",
+    "rating_score": 4.8,
+    "rating_count": 2316,
+    "default_seo_title": "Forecourt | Sell your car in 24 hours",
+    "default_seo_description": "Guaranteed valuations, free inspections and same-day payment for your car across Greater Manchester.",
+    "default_og_image": { "seed_image": "hero-blue-hatchback.jpg", "alt": "Blue hatchback parked on a country road under a wide blue sky" }
+  }
+}

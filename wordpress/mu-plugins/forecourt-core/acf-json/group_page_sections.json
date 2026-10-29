@@ -1,0 +1,931 @@
+{
+    "key": "group_page_sections",
+    "title": "Page Sections",
+    "fields": [
+        {
+            "key": "field_page_sections",
+            "label": "Sections",
+            "name": "sections",
+            "type": "flexible_content",
+            "instructions": "Build the page from reusable sections. Drag to reorder.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layouts": {
+                "layout_hero": {
+                    "key": "layout_hero",
+                    "name": "hero",
+                    "label": "Hero",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_fc_hero_anchor",
+                            "label": "Anchor ID",
+                            "name": "anchor",
+                            "type": "text",
+                            "instructions": "Optional. Used for in-page links, e.g. contact.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "30",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_fc_hero_eyebrow",
+                            "label": "Eyebrow",
+                            "name": "eyebrow",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "40",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_fc_hero_heading",
+                            "label": "Heading",
+                            "name": "heading",
+                            "type": "text",
+                            "instructions": "The page's main heading (H1). Use once per page.",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_fc_hero_body",
+                            "label": "Body",
+                            "name": "body",
+                            "type": "textarea",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "rows": 2,
+                            "new_lines": ""
+                        },
+                        {
+                            "key": "field_fc_hero_primary_cta",
+                            "label": "Primary button",
+                            "name": "primary_cta",
+                            "type": "link",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array"
+                        },
+                        {
+                            "key": "field_fc_hero_secondary_cta",
+                            "label": "Secondary button",
+                            "name": "secondary_cta",
+                            "type": "link",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array"
+                        },
+                        {
+                            "key": "field_fc_hero_image",
+                            "label": "Image",
+                            "name": "image",
+                            "type": "image",
+                            "instructions": "Set descriptive alt text in the media library.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array",
+                            "library": "all",
+                            "preview_size": "medium",
+                            "mime_types": "jpg,jpeg,png,webp,avif"
+                        },
+                        {
+                            "key": "field_fc_hero_trust_points",
+                            "label": "Trust points",
+                            "name": "trust_points",
+                            "type": "repeater",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "layout": "block",
+                            "button_label": "Add trust point",
+                            "min": 0,
+                            "max": 4,
+                            "collapsed": "",
+                            "rows_per_page": 20,
+                            "sub_fields": [
+                                {
+                                    "key": "field_fc_hero_trust_points_text",
+                                    "label": "Text",
+                                    "name": "text",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "parent_repeater": "field_fc_hero_trust_points"
+                                }
+                            ]
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_text_image": {
+                    "key": "layout_text_image",
+                    "name": "text_image",
+                    "label": "Text and image",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_fc_text_image_anchor",
+                            "label": "Anchor ID",
+                            "name": "anchor",
+                            "type": "text",
+                            "instructions": "Optional. Used for in-page links, e.g. contact.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "30",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_fc_text_image_heading",
+                            "label": "Heading",
+                            "name": "heading",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_fc_text_image_body",
+                            "label": "Body",
+                            "name": "body",
+                            "type": "wysiwyg",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "tabs": "all",
+                            "toolbar": "basic",
+                            "media_upload": 0,
+                            "delay": 0
+                        },
+                        {
+                            "key": "field_fc_text_image_image",
+                            "label": "Image",
+                            "name": "image",
+                            "type": "image",
+                            "instructions": "Set descriptive alt text in the media library.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "60",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array",
+                            "library": "all",
+                            "preview_size": "medium",
+                            "mime_types": "jpg,jpeg,png,webp,avif"
+                        },
+                        {
+                            "key": "field_fc_text_image_image_position",
+                            "label": "Image position",
+                            "name": "image_position",
+                            "type": "select",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "40",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "left": "Left",
+                                "right": "Right"
+                            },
+                            "default_value": "right",
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "ui": 0
+                        },
+                        {
+                            "key": "field_fc_text_image_cta",
+                            "label": "Button",
+                            "name": "cta",
+                            "type": "link",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array"
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_cards": {
+                    "key": "layout_cards",
+                    "name": "cards",
+                    "label": "Cards",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_fc_cards_anchor",
+                            "label": "Anchor ID",
+                            "name": "anchor",
+                            "type": "text",
+                            "instructions": "Optional. Used for in-page links, e.g. contact.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "30",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_fc_cards_heading",
+                            "label": "Heading",
+                            "name": "heading",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_fc_cards_intro",
+                            "label": "Intro",
+                            "name": "intro",
+                            "type": "textarea",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "rows": 2,
+                            "new_lines": ""
+                        },
+                        {
+                            "key": "field_fc_cards_numbered",
+                            "label": "Show as numbered steps",
+                            "name": "numbered",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "ui": 1,
+                            "default_value": 0
+                        },
+                        {
+                            "key": "field_fc_cards_items",
+                            "label": "Cards",
+                            "name": "items",
+                            "type": "repeater",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "layout": "block",
+                            "button_label": "Add card",
+                            "min": 0,
+                            "max": 6,
+                            "collapsed": "",
+                            "rows_per_page": 20,
+                            "sub_fields": [
+                                {
+                                    "key": "field_fc_cards_items_title",
+                                    "label": "Title",
+                                    "name": "title",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "parent_repeater": "field_fc_cards_items"
+                                },
+                                {
+                                    "key": "field_fc_cards_items_body",
+                                    "label": "Body",
+                                    "name": "body",
+                                    "type": "textarea",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "rows": 3,
+                                    "new_lines": "",
+                                    "parent_repeater": "field_fc_cards_items"
+                                },
+                                {
+                                    "key": "field_fc_cards_items_icon",
+                                    "label": "Icon",
+                                    "name": "icon",
+                                    "type": "image",
+                                    "instructions": "Optional. Square SVG/PNG works best.",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "return_format": "array",
+                                    "library": "all",
+                                    "preview_size": "medium",
+                                    "mime_types": "jpg,jpeg,png,webp,avif",
+                                    "parent_repeater": "field_fc_cards_items"
+                                }
+                            ]
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_testimonials": {
+                    "key": "layout_testimonials",
+                    "name": "testimonials",
+                    "label": "Testimonials",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_fc_testimonials_anchor",
+                            "label": "Anchor ID",
+                            "name": "anchor",
+                            "type": "text",
+                            "instructions": "Optional. Used for in-page links, e.g. contact.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "30",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_fc_testimonials_heading",
+                            "label": "Heading",
+                            "name": "heading",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_fc_testimonials_items",
+                            "label": "Testimonials",
+                            "name": "items",
+                            "type": "repeater",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "layout": "block",
+                            "button_label": "Add testimonial",
+                            "min": 0,
+                            "max": 6,
+                            "collapsed": "",
+                            "rows_per_page": 20,
+                            "sub_fields": [
+                                {
+                                    "key": "field_fc_testimonials_items_quote",
+                                    "label": "Quote",
+                                    "name": "quote",
+                                    "type": "textarea",
+                                    "instructions": "",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "rows": 3,
+                                    "new_lines": "",
+                                    "parent_repeater": "field_fc_testimonials_items"
+                                },
+                                {
+                                    "key": "field_fc_testimonials_items_name",
+                                    "label": "Name",
+                                    "name": "name",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "40",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "parent_repeater": "field_fc_testimonials_items"
+                                },
+                                {
+                                    "key": "field_fc_testimonials_items_location",
+                                    "label": "Location",
+                                    "name": "location",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "40",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "parent_repeater": "field_fc_testimonials_items"
+                                },
+                                {
+                                    "key": "field_fc_testimonials_items_rating",
+                                    "label": "Rating",
+                                    "name": "rating",
+                                    "type": "number",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "20",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "min": 1,
+                                    "max": 5,
+                                    "step": 1,
+                                    "parent_repeater": "field_fc_testimonials_items"
+                                }
+                            ]
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_stats": {
+                    "key": "layout_stats",
+                    "name": "stats",
+                    "label": "Statistics",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_fc_stats_anchor",
+                            "label": "Anchor ID",
+                            "name": "anchor",
+                            "type": "text",
+                            "instructions": "Optional. Used for in-page links, e.g. contact.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "30",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_fc_stats_heading",
+                            "label": "Heading",
+                            "name": "heading",
+                            "type": "text",
+                            "instructions": "Optional. Visually hidden if left empty.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_fc_stats_items",
+                            "label": "Statistics",
+                            "name": "items",
+                            "type": "repeater",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "layout": "block",
+                            "button_label": "Add statistic",
+                            "min": 0,
+                            "max": 4,
+                            "collapsed": "",
+                            "rows_per_page": 20,
+                            "sub_fields": [
+                                {
+                                    "key": "field_fc_stats_items_value",
+                                    "label": "Value",
+                                    "name": "value",
+                                    "type": "text",
+                                    "instructions": "e.g. 24h, 98%, 12,000+",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "40",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "parent_repeater": "field_fc_stats_items"
+                                },
+                                {
+                                    "key": "field_fc_stats_items_label",
+                                    "label": "Label",
+                                    "name": "label",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "60",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "parent_repeater": "field_fc_stats_items"
+                                }
+                            ]
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_cta": {
+                    "key": "layout_cta",
+                    "name": "cta",
+                    "label": "Call to action",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_fc_cta_anchor",
+                            "label": "Anchor ID",
+                            "name": "anchor",
+                            "type": "text",
+                            "instructions": "Optional. Used for in-page links, e.g. contact.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "30",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_fc_cta_heading",
+                            "label": "Heading",
+                            "name": "heading",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_fc_cta_body",
+                            "label": "Body",
+                            "name": "body",
+                            "type": "textarea",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "rows": 2,
+                            "new_lines": ""
+                        },
+                        {
+                            "key": "field_fc_cta_cta",
+                            "label": "Button",
+                            "name": "cta",
+                            "type": "link",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "60",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array"
+                        },
+                        {
+                            "key": "field_fc_cta_variant",
+                            "label": "Style",
+                            "name": "variant",
+                            "type": "select",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "40",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "dark": "Dark",
+                                "brand": "Brand colour"
+                            },
+                            "default_value": "brand",
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "ui": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_faq": {
+                    "key": "layout_faq",
+                    "name": "faq",
+                    "label": "FAQ",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_fc_faq_anchor",
+                            "label": "Anchor ID",
+                            "name": "anchor",
+                            "type": "text",
+                            "instructions": "Optional. Used for in-page links, e.g. contact.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "30",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_fc_faq_heading",
+                            "label": "Heading",
+                            "name": "heading",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_fc_faq_items",
+                            "label": "Questions",
+                            "name": "items",
+                            "type": "repeater",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "layout": "block",
+                            "button_label": "Add question",
+                            "min": 0,
+                            "max": 0,
+                            "collapsed": "",
+                            "rows_per_page": 20,
+                            "sub_fields": [
+                                {
+                                    "key": "field_fc_faq_items_question",
+                                    "label": "Question",
+                                    "name": "question",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "parent_repeater": "field_fc_faq_items"
+                                },
+                                {
+                                    "key": "field_fc_faq_items_answer",
+                                    "label": "Answer",
+                                    "name": "answer",
+                                    "type": "wysiwyg",
+                                    "instructions": "",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "tabs": "all",
+                                    "toolbar": "basic",
+                                    "media_upload": 0,
+                                    "delay": 0,
+                                    "parent_repeater": "field_fc_faq_items"
+                                }
+                            ]
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_contact": {
+                    "key": "layout_contact",
+                    "name": "contact",
+                    "label": "Contact / enquiry form",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_fc_contact_anchor",
+                            "label": "Anchor ID",
+                            "name": "anchor",
+                            "type": "text",
+                            "instructions": "Optional. Used for in-page links, e.g. contact.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "30",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_fc_contact_heading",
+                            "label": "Heading",
+                            "name": "heading",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_fc_contact_intro",
+                            "label": "Intro",
+                            "name": "intro",
+                            "type": "textarea",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "rows": 2,
+                            "new_lines": ""
+                        },
+                        {
+                            "key": "field_fc_contact_success_message",
+                            "label": "Success message",
+                            "name": "success_message",
+                            "type": "textarea",
+                            "instructions": "Shown after a successful submission.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "rows": 2,
+                            "new_lines": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                }
+            },
+            "min": "",
+            "max": "",
+            "button_label": "Add section"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "seamless",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content",
+        "excerpt",
+        "discussion",
+        "comments",
+        "featured_image",
+        "format",
+        "send-trackbacks"
+    ],
+    "active": true,
+    "description": "Flexible content sections rendered by the Next.js frontend.",
+    "show_in_rest": 0,
+    "modified": 1761696000
+}

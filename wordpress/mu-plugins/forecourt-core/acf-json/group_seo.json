@@ -1,0 +1,91 @@
+{
+    "key": "group_seo",
+    "title": "SEO",
+    "fields": [
+        {
+            "key": "field_seo_title",
+            "label": "SEO title",
+            "name": "seo_title",
+            "type": "text",
+            "instructions": "Recommended 50 to 60 characters. Falls back to the default in Site Settings.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "maxlength": 70
+        },
+        {
+            "key": "field_seo_description",
+            "label": "Meta description",
+            "name": "seo_description",
+            "type": "textarea",
+            "instructions": "Recommended 140 to 160 characters.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "rows": 2,
+            "new_lines": "",
+            "maxlength": 170
+        },
+        {
+            "key": "field_seo_og_image",
+            "label": "Social share image",
+            "name": "seo_og_image",
+            "type": "image",
+            "instructions": "1200 × 630 recommended.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "preview_size": "medium",
+            "mime_types": "jpg,jpeg,png,webp,avif"
+        },
+        {
+            "key": "field_seo_noindex",
+            "label": "Hide from search engines",
+            "name": "seo_noindex",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "ui": 1,
+            "default_value": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "page"
+            }
+        ]
+    ],
+    "menu_order": 10,
+    "position": "side",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1761696000
+}

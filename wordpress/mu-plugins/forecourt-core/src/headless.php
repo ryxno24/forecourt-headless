@@ -46,3 +46,9 @@ add_action('phpmailer_init', function (PHPMailer\PHPMailer\PHPMailer $mailer): v
 });
 
 add_filter('xmlrpc_enabled', '__return_false');
+
+add_action('admin_menu', function (): void {
+	remove_menu_page('edit-comments.php');
+});
+
+add_filter('comments_open', '__return_false');
