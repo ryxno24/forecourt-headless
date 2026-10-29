@@ -1,0 +1,26 @@
+{
+  "siteName": "Forecourt",
+  "phone": "0161 496 0000",
+  "email": "hello@forecourt.example",
+  "address": "Unit 4, Trade Park Way\nManchester\nM17 1AA",
+  "footerText": "Forecourt is a fictional business created for a technical assessment. Names, figures and reviews are illustrative.",
+  "headerCta": {
+    "label": "Get my valuation",
+    "url": "#contact",
+    "newTab": false
+  },
+  "rating": {
+    "score": 4.8,
+    "count": 2316
+  },
+  "defaultSeo": {
+    "title": "Forecourt | Sell your car in 24 hours",
+    "description": "Guaranteed valuations, free inspections and same-day payment for your car across Greater Manchester.",
+    "ogImage": {
+      "url": "/fixtures/hero-blue-hatchback.jpg",
+      "alt": "Blue hatchback parked on a country road under a wide blue sky",
+      "width": 1920,
+      "height": 1280
+    }
+  }
+}
