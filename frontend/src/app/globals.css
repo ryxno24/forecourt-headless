@@ -1,26 +1,71 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --muted: #475467;
+  --focus-ring: #0f1b2d;
+}
+
+.on-dark {
+  --muted: #c3cbd8;
+  --focus-ring: #ffffff;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-ink: #0f1b2d;
+  --color-ink-strong: #1d2c44;
+  --color-paper: #f6f4ef;
+  --color-surface: #ffffff;
+  --color-line: #e2ddd3;
+  --color-brand: #ffc629;
+  --color-brand-strong: #f2b600;
+  --color-go: #17784a;
+  --color-star: #b86e00;
+  --color-muted: var(--muted);
+
+  --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-heading), var(--font-body), ui-sans-serif, system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    @apply bg-paper font-sans text-ink antialiased;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--focus-ring);
+    outline-offset: 3px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .rich-text > * + * {
+    margin-top: 1em;
+  }
+
+  .rich-text a {
+    @apply font-semibold text-ink underline underline-offset-4;
+  }
+
+  .rich-text ul {
+    @apply list-disc pl-5;
+  }
+
+  .rich-text ol {
+    @apply list-decimal pl-5;
+  }
+
+  .rich-text strong {
+    @apply font-semibold text-ink;
+  }
 }
