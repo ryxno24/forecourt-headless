@@ -49,6 +49,8 @@ wp option update blog_public 0
 wp option update blogdescription "Sell your car in 24 hours"
 wp option update timezone_string "Europe/London"
 
+wp eval-file /scripts/sync-acf.php
+
 if [ -f /scripts/seed.php ] && [ -f /seed/home.json ]; then
   wp eval-file /scripts/seed.php
 fi

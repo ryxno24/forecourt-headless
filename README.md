@@ -52,6 +52,15 @@ Setup is safe to run again, but it resets the home page to the seed content. `ma
 
 **Without WordPress at all.** `CONTENT_SOURCE=fixtures npm run dev` renders the page from bundled sample JSON. CI uses this, as does the Docker image: after `make env` (or copying `.env.example` to `.env`), `docker compose --profile frontend up --build frontend` serves a production build of the frontend on :3000.
 
+**A quick tour of wp-admin.** Log in at http://localhost:8080/wp-admin with username `admin` and password `password`. Setup creates this account; change `WP_ADMIN_USER` and `WP_ADMIN_PASSWORD` in `.env` before running it if you'd like different ones. These are local development defaults only. Visiting http://localhost:8080 itself redirects to the Next.js site on purpose, because in a headless setup WordPress has no public front end.
+
+| Menu item | What's there |
+| --- | --- |
+| **Pages → Home** | The page builder: the "Sections" Flexible Content field with all eight layouts (add, remove, drag to reorder), plus the **SEO** box in the sidebar |
+| **Site Settings** | Global content: site name, phone, email, address, header button, rating, footer text and default SEO |
+| **Enquiries** | Form submissions, stored as a private post type |
+| **ACF → Field Groups** (**SCF** with the free plugin) | The three field groups: Page Sections, SEO and Site Settings. Setup imports them from the JSON files in the repo, and any change saved here writes back to those files |
+
 **Try the editor flow.** Edit any section in wp-admin and click Update, then reload the site. The change is there straight away (see [Revalidation](#caching-and-revalidation)). Submit the form and the enquiry appears under **Enquiries** in wp-admin, with a notification email in Mailpit.
 
 ---
@@ -130,7 +139,7 @@ wordpress/
     src/revalidate.php      on save, tell Next.js which cache tags changed
     src/headless.php        redirect front end to Next.js, noindex, hide users endpoint, mail
   themes/forecourt-headless/  near-empty theme (WordPress needs one active)
-  scripts/                  setup.sh and the seed script, run inside the wpcli container
+  scripts/                  setup.sh, ACF field group sync and the seed script, run inside the wpcli container
   seed/                     page content as JSON + two CC0 images
 frontend/src/
   lib/                      wordpress.ts (client), schemas.ts (Zod), seo.ts, env.ts, enquiry-schema.ts
