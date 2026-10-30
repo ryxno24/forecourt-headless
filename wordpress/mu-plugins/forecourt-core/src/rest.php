@@ -21,10 +21,10 @@ add_action('rest_api_init', function (): void {
 	]);
 });
 
-function forecourt_rest_cached(array $data): WP_REST_Response
+function forecourt_rest_uncached(array $data): WP_REST_Response
 {
 	$response = new WP_REST_Response($data);
-	$response->header('Cache-Control', 'public, max-age=60, stale-while-revalidate=300');
+	$response->header('Cache-Control', 'no-store');
 
 	return $response;
 }
@@ -37,7 +37,7 @@ function forecourt_rest_get_page(WP_REST_Request $request): WP_REST_Response|WP_
 		return new WP_Error('forecourt_not_found', 'Page not found.', ['status' => 404]);
 	}
 
-	return forecourt_rest_cached(forecourt_get_page_data($page));
+	return forecourt_rest_uncached(forecourt_get_page_data($page));
 }
 
 function forecourt_get_page_data(WP_Post $page): array
@@ -59,7 +59,7 @@ function forecourt_get_page_data(WP_Post $page): array
 
 function forecourt_rest_get_settings(): WP_REST_Response
 {
-	return forecourt_rest_cached(forecourt_get_settings_data());
+	return forecourt_rest_uncached(forecourt_get_settings_data());
 }
 
 function forecourt_get_settings_data(): array

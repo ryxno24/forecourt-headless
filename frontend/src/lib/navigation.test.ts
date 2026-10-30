@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { page, settings } from "@/components/sections/test-utils";
-import { buildNav, navLabel, telHref } from "./navigation";
+import { buildNav, homeHref, navLabel, telHref } from "./navigation";
 
 const withAnchor = (anchor: string | null) => ({ ...page.sections[0], anchor });
 
@@ -28,7 +28,7 @@ describe("buildNav", () => {
   it("links to every anchored section except contact", () => {
     const nav = buildNav(page.sections, settings.siteName);
 
-    expect(nav.map((item) => item.href)).toEqual(["#how-it-works", "#why-forecourt", "#reviews", "#faq"]);
+    expect(nav.map((item) => item.href)).toEqual(["/#how-it-works", "/#why-forecourt", "/#reviews", "/#faq"]);
     expect(nav.map((item) => item.label)).toEqual(["How it works", "Why Forecourt", "Reviews", "FAQs"]);
   });
 
@@ -43,5 +43,16 @@ describe("telHref", () => {
   it("strips spaces and punctuation from the phone number", () => {
     expect(telHref("0161 496 0000")).toBe("tel:01614960000");
     expect(telHref("+44 (0)161-496-0000")).toBe("tel:+4401614960000");
+  });
+});
+
+describe("homeHref", () => {
+  it("points in-page anchors at the home page so they work from any route", () => {
+    expect(homeHref("#contact")).toBe("/#contact");
+  });
+
+  it("leaves other links alone", () => {
+    expect(homeHref("https://example.com/")).toBe("https://example.com/");
+    expect(homeHref("/privacy")).toBe("/privacy");
   });
 });

@@ -19,7 +19,11 @@ export function navLabel(section: Section, siteName: string): string {
 export function buildNav(sections: Section[], siteName: string): NavItem[] {
   return sections
     .filter((section) => section.anchor && section.layout !== "contact")
-    .map((section) => ({ href: `#${section.anchor}`, label: navLabel(section, siteName) }));
+    .map((section) => ({ href: homeHref(`#${section.anchor}`), label: navLabel(section, siteName) }));
+}
+
+export function homeHref(url: string): string {
+  return url.startsWith("#") ? `/${url}` : url;
 }
 
 export function telHref(phone: string): string {

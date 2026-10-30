@@ -4,6 +4,13 @@ import settingsFixture from "./__fixtures__/settings.json";
 import { PageSchema, SettingsSchema, parseSections } from "./schemas";
 
 describe("parseSections", () => {
+  it("keeps a section when one of its buttons or its anchor is invalid", () => {
+    const hero = { ...pageFixture.sections[0], anchor: "", primaryCta: { label: "", url: "", newTab: false } };
+    const [section] = parseSections([hero]);
+
+    expect(section).toMatchObject({ layout: "hero", anchor: null, primaryCta: null });
+  });
+
   it("parses the home fixture into 8 sections", () => {
     const sections = parseSections(pageFixture.sections);
 
@@ -86,5 +93,11 @@ describe("SettingsSchema", () => {
 
   it("accepts a missing rating", () => {
     expect(SettingsSchema.parse({ ...settingsFixture, rating: null }).rating).toBeNull();
+  });
+
+  it("drops an invalid header button instead of failing the whole site", () => {
+    const settings = SettingsSchema.parse({ ...settingsFixture, headerCta: { label: "", url: "", newTab: false } });
+
+    expect(settings.headerCta).toBeNull();
   });
 });

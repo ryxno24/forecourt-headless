@@ -42,7 +42,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
         {contactAnchor && (
           <StickyCta
             targetId={contactAnchor}
-            link={{ label: settings.headerCta?.label ?? "Get my free valuation", url: `#${contactAnchor}`, newTab: false }}
+            link={{ label: settings.headerCta?.label ?? "Get my free valuation", url: `/#${contactAnchor}`, newTab: false }}
           />
         )}
       </body>

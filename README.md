@@ -46,11 +46,11 @@ FORECOURT_SHARED_SECRET=<same value as in .env>
 | Page API | http://localhost:8080/wp-json/forecourt/v1/page/home |
 | Mailpit (enquiry emails) | http://localhost:8025 |
 
-Setup is idempotent, so it is safe to run again. `make reset` wipes the database for a fresh start.
+Setup is safe to run again, but it resets the home page to the seed content. `make reset` wipes the database for a fresh start.
 
 **ACF Pro or free.** Flexible Content needs ACF Pro. If you drop an ACF Pro zip into `wordpress/plugins-dropin/`, setup installs it. Otherwise it installs [Secure Custom Fields](https://wordpress.org/plugins/secure-custom-fields/), the free WordPress.org fork of ACF that includes Flexible Content, Repeaters and Options Pages and reads the same field group JSON. No licensed files or keys are in this repo. I tested both paths.
 
-**Without WordPress at all.** `CONTENT_SOURCE=fixtures npm run dev` renders the page from bundled sample JSON. CI uses this, as does the Docker image: `docker compose --profile frontend up --build frontend` serves a production build of the frontend on :3000.
+**Without WordPress at all.** `CONTENT_SOURCE=fixtures npm run dev` renders the page from bundled sample JSON. CI uses this, as does the Docker image: after `make env` (or copying `.env.example` to `.env`), `docker compose --profile frontend up --build frontend` serves a production build of the frontend on :3000.
 
 **Try the editor flow.** Edit any section in wp-admin and click Update, then reload the site. The change is there straight away (see [Revalidation](#caching-and-revalidation)). Submit the form and the enquiry appears under **Enquiries** in wp-admin, with a notification email in Mailpit.
 
@@ -146,8 +146,8 @@ frontend/src/
 
 This happens at three layers, and each layer has its own job:
 
-1. **WordPress normaliser.** Empty strings become `null`, unset images become `null`, and repeater rows missing their required field (a testimonial without a quote, say) are dropped. Unknown layouts pass through untouched.
-2. **Zod schemas.** Each section is validated on its own. A section that fails is dropped with a server log, and the rest of the page still renders. Optional lists default to `[]`.
+1. **WordPress normaliser.** Empty strings become `null`, unset images become `null`, links WordPress can't make safe (an unsupported protocol, say) become `null`, and repeater rows missing their required field (a testimonial without a quote, say) are dropped. Unknown layouts pass through untouched.
+2. **Zod schemas.** Each section is validated on its own. A section that fails is dropped with a server log, and the rest of the page still renders. An unusable button link or anchor is dropped on its own, so it costs the button, not the section.
 3. **Components.** Each one renders what it has. Text and image with no image becomes a text-only section, a section with no heading drops it, an empty FAQ renders nothing, and CTAs without a link are hidden.
 
 Tests cover each of these.
@@ -158,6 +158,7 @@ Tests cover each of these.
 - When an editor saves a page or Site Settings, a hook on `acf/save_post` sends a non-blocking request to `/api/revalidate` with a shared secret. Next clears just those tags, so the next visitor sees the change.
 - I hooked `acf/save_post` rather than `save_post` because `save_post` fires before ACF has written the field values. Revalidating there could cache the old content.
 - Unpublishing or trashing a page revalidates it too.
+- The endpoint sends `Cache-Control: no-store`, so a host's edge cache can never hand Next old JSON straight after a save. Next is the only cache.
 - **If WordPress goes down,** the last good page keeps being served from cache for up to a day. I tested this by stopping the WordPress container.
 
 ---
@@ -183,7 +184,7 @@ For a headless lead-gen page, Flexible Content wins. For a content-heavy site wh
 
 **Server Action for the form, not a client-side fetch to WordPress.** The browser posts to Next, and Next calls WordPress server-to-server with a shared secret. WordPress is never exposed to the browser, there's no CORS, and the form still works with JavaScript off (it falls back to a normal form post and a confirmation page).
 
-**Validated twice.** The form is checked in the browser for instant feedback, on the Next server with the same Zod schema, and again in WordPress before anything is stored. Client checks are for UX; server checks are for trust.
+**Validated on both servers.** With JavaScript on, the Server Action checks the form against a Zod schema and returns inline errors without a page reload. With JavaScript off, the browser's built-in checks (`required`, `type="email"`) apply instead. WordPress validates again before anything is stored, because it should never trust its caller.
 
 **Rich text rendered as HTML.** WYSIWYG fields are passed through `wp_kses_post` in the endpoint on every response, so scripts and event handlers are stripped before the HTML leaves WordPress, whoever wrote it. I didn't add a second sanitiser in the frontend, which keeps the bundle small and keeps one place responsible.
 
@@ -205,7 +206,7 @@ npm run lint && npm run typecheck && npm test
 CONTENT_SOURCE=fixtures npm run build
 ```
 
-**Automated tests (Vitest + Testing Library, 89 tests):**
+**Automated tests (Vitest + Testing Library, 93 tests):**
 - Zod schemas: valid data, empty values, broken sections dropped
 - WordPress client: timeouts, 404s, bad JSON, invalid responses
 - Every section component with full and empty data

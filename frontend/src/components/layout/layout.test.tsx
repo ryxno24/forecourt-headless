@@ -13,7 +13,7 @@ describe("Header", () => {
     const nav = screen.getByRole("navigation", { name: "Main" });
     expect(nav.querySelectorAll("a")).toHaveLength(4);
     expect(screen.getByRole("link", { name: /0161 496 0000/ })).toHaveAttribute("href", "tel:01614960000");
-    expect(screen.getByRole("link", { name: "Get my valuation" })).toHaveAttribute("href", "#contact");
+    expect(screen.getByRole("link", { name: "Get my valuation" })).toHaveAttribute("href", "/#contact");
   });
 
   it("omits the phone link when no phone number is set", () => {

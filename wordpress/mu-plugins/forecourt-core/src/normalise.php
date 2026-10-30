@@ -41,13 +41,30 @@ function forecourt_normalise_image(mixed $image): ?array
 	];
 }
 
+function forecourt_anchor(mixed $value): ?string
+{
+	$text = forecourt_text($value);
+	$anchor = $text === null ? '' : sanitize_title($text);
+
+	return $anchor === '' ? null : $anchor;
+}
+
 function forecourt_normalise_link(mixed $link): ?array
 {
-	if (!is_array($link) || empty($link['url'])) {
+	if (!is_array($link) || !is_string($link['url'] ?? null)) {
 		return null;
 	}
 
-	$url = str_starts_with($link['url'], '#') ? '#' . sanitize_title(substr($link['url'], 1)) : esc_url_raw($link['url']);
+	if (str_starts_with($link['url'], '#')) {
+		$anchor = forecourt_anchor(substr($link['url'], 1));
+		$url = $anchor === null ? '' : "#{$anchor}";
+	} else {
+		$url = esc_url_raw($link['url']);
+	}
+
+	if ($url === '') {
+		return null;
+	}
 
 	return [
 		'label' => forecourt_text($link['title'] ?? '') ?? $url,
@@ -91,12 +108,10 @@ function forecourt_normalise_trust_points(mixed $rows): array
 function forecourt_normalise_section(array $row, int $index): array
 {
 	$layout = (string) ($row['acf_fc_layout'] ?? 'unknown');
-	$anchor = forecourt_text($row['anchor'] ?? '');
-
 	$base = [
 		'layout' => $layout,
 		'id' => "{$layout}-{$index}",
-		'anchor' => $anchor === null ? null : sanitize_title($anchor),
+		'anchor' => forecourt_anchor($row['anchor'] ?? ''),
 	];
 
 	$fields = match ($layout) {

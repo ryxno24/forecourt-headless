@@ -2,7 +2,7 @@ import NextLink from "next/link";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { PhoneIcon } from "@/components/ui/Icons";
-import { telHref, type NavItem } from "@/lib/navigation";
+import { homeHref, telHref, type NavItem } from "@/lib/navigation";
 import type { Settings } from "@/lib/schemas";
 
 export function Header({ settings, nav }: { settings: Settings; nav: NavItem[] }) {
@@ -40,7 +40,7 @@ export function Header({ settings, nav }: { settings: Settings; nav: NavItem[] }
           )}
           {headerCta && (
             <div className="hidden sm:block">
-              <Button link={headerCta} />
+              <Button link={{ ...headerCta, url: homeHref(headerCta.url) }} />
             </div>
           )}
         </div>

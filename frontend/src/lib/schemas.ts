@@ -16,7 +16,9 @@ export const LinkSchema = z.object({
   newTab: z.boolean(),
 });
 
-const base = { id: text, anchor: optionalText };
+const optionalLink = LinkSchema.nullable().catch(null);
+
+const base = { id: text, anchor: optionalText.catch(null) };
 
 const HeroSchema = z.object({
   ...base,
@@ -24,8 +26,8 @@ const HeroSchema = z.object({
   heading: text,
   eyebrow: optionalText,
   body: optionalText,
-  primaryCta: LinkSchema.nullable(),
-  secondaryCta: LinkSchema.nullable(),
+  primaryCta: optionalLink,
+  secondaryCta: optionalLink,
   image: ImageSchema.nullable(),
   trustPoints: z.array(text),
 });
@@ -37,7 +39,7 @@ const TextImageSchema = z.object({
   body: optionalText,
   image: ImageSchema.nullable(),
   imagePosition: z.enum(["left", "right"]),
-  cta: LinkSchema.nullable(),
+  cta: optionalLink,
 });
 
 const CardsSchema = z.object({
@@ -75,7 +77,7 @@ const CtaSchema = z.object({
   layout: z.literal("cta"),
   heading: text,
   body: optionalText,
-  cta: LinkSchema.nullable(),
+  cta: optionalLink,
   variant: z.enum(["dark", "brand"]),
 });
 
@@ -147,7 +149,7 @@ export const SettingsSchema = z.object({
   email: optionalText,
   address: optionalText,
   footerText: optionalText,
-  headerCta: LinkSchema.nullable(),
+  headerCta: optionalLink,
   rating: z.object({ score: z.number().min(0).max(5), count: z.number().int().positive() }).nullable(),
   defaultSeo: z.object({
     title: optionalText,
