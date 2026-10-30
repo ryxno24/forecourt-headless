@@ -8,7 +8,7 @@ up: env
 
 setup: up
 	docker compose run --rm wpcli bash /scripts/setup.sh
-	@test ! -d frontend || test -f frontend/.env.local || (printf "WORDPRESS_URL=http://localhost:8080\nSITE_URL=http://localhost:3000\nCONTENT_SOURCE=wordpress\nFORECOURT_SHARED_SECRET=%s\n" "$$(grep FORECOURT_SHARED_SECRET .env | cut -d= -f2)" > frontend/.env.local && echo "Created frontend/.env.local")
+	@test ! -d frontend || test -f frontend/.env.local || (printf "WORDPRESS_URL=%s\nSITE_URL=%s\nCONTENT_SOURCE=wordpress\nFORECOURT_SHARED_SECRET=%s\n" "$$(grep ^WP_URL= .env | cut -d= -f2)" "$$(grep ^FORECOURT_FRONTEND_URL= .env | cut -d= -f2)" "$$(grep ^FORECOURT_SHARED_SECRET= .env | cut -d= -f2)" > frontend/.env.local && echo "Created frontend/.env.local")
 
 down:
 	docker compose down

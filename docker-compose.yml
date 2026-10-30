@@ -65,6 +65,7 @@ services:
       WP_ADMIN_USER: ${WP_ADMIN_USER:-admin}
       WP_ADMIN_PASSWORD: ${WP_ADMIN_PASSWORD:-password}
       WP_ADMIN_EMAIL: ${WP_ADMIN_EMAIL:-admin@forecourt.test}
+      MAILPIT_PORT: ${MAILPIT_PORT:-8025}
     volumes: *wordpress-volumes
 
   mailpit:
